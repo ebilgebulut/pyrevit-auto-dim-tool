@@ -1,0 +1,358 @@
+<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Auto Dim Creation Panel"
+    Width="780"
+    Height="750"
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="NoResize"
+    Background="#F5F6F7"
+    FontFamily="Segoe UI">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="BrandGreen" Color="#00D83A"/>
+        <SolidColorBrush x:Key="BrandGreenDark" Color="#00B832"/>
+        <SolidColorBrush x:Key="TextMain" Color="#111827"/>
+        <SolidColorBrush x:Key="TextMuted" Color="#6B7280"/>
+        <SolidColorBrush x:Key="BorderSoft" Color="#E5E7EB"/>
+        <SolidColorBrush x:Key="PanelSoft" Color="#F8FAFC"/>
+
+        <DropShadowEffect x:Key="SoftShadow"
+                          BlurRadius="18"
+                          ShadowDepth="2"
+                          Opacity="0.10"/>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+        </Style>
+
+        <Style x:Key="SectionTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+        </Style>
+
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderSoft}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="Effect" Value="{StaticResource SoftShadow}"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="16,0"/>
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+            <Setter Property="Margin" Value="0,3,0,3"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="8,0,8,0"/>
+            <Setter Property="BorderBrush" Value="#CBD5E1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="6,0,6,0"/>
+            <Setter Property="BorderBrush" Value="#CBD5E1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="BorderBrush" Value="#CBD5E1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="14"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="14"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Style="{StaticResource Card}"
+                Padding="16,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="AUTO DIM CREATION PANEL"
+                               FontSize="21"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource TextMain}"/>
+                    <TextBlock Text="Create facade and grid dimensions for selected plan views"
+                               FontSize="11"
+                               Foreground="{StaticResource TextMuted}"
+                               Margin="1,4,0,0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Opacity="0.92">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <TextBlock Text="Arch-"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource TextMain}"/>
+                        <TextBlock Text="X"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource BrandGreen}"/>
+                    </StackPanel>
+                    <TextBlock Text="Studio"
+                               FontSize="10"
+                               Foreground="{StaticResource TextMuted}"
+                               HorizontalAlignment="Right"
+                               Margin="0,1,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Main content -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="12"/>
+                <ColumnDefinition Width="0.85*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Plan views card -->
+            <Border Grid.Column="0"
+                    Style="{StaticResource Card}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Text="SELECT PLAN VIEWS TO APPLY"
+                               Style="{StaticResource SectionTitle}"/>
+
+                    <ListBox Grid.Row="1"
+                             x:Name="planViewList"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+
+                    <Grid Grid.Row="2" Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Select / deselect all"
+                                   FontSize="11"
+                                   Foreground="{StaticResource TextMuted}"
+                                   VerticalAlignment="Center"/>
+                        <CheckBox x:Name="selectAllCheckBox"
+                                  Grid.Column="1"
+                                  Content="All"
+                                  FontSize="11"
+                                  Checked="selectAllCheckBox_Changed"
+                                  Unchecked="selectAllCheckBox_Changed"/>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Settings card -->
+            <Border Grid.Column="2"
+                    Style="{StaticResource Card}">
+                <StackPanel>
+
+                    <TextBlock Text="DIMENSION TYPE"
+                               Style="{StaticResource SectionTitle}"/>
+                    <ComboBox x:Name="dimTypeCombo"
+                              Margin="0,0,0,18"/>
+
+                    <TextBlock Text="DIMENSIONS TO CREATE"
+                               Style="{StaticResource SectionTitle}"/>
+
+                    <Border Background="{StaticResource PanelSoft}"
+                            BorderBrush="{StaticResource BorderSoft}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="12"
+                            Margin="0,0,0,12">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="44"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="Order" FontSize="10" Foreground="{StaticResource TextMuted}" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="Use" FontSize="10" Foreground="{StaticResource TextMuted}" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Facade dimension" FontSize="12" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="orderFacadeDimText" Text="1" Width="34" Height="24" FontSize="11" HorizontalContentAlignment="Center" Padding="0"/>
+                            <CheckBox Grid.Row="1" Grid.Column="2" x:Name="chkFacadeDim" IsChecked="False"/>
+
+                            <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,7,0,0">
+                                <TextBlock Text="Facade segments" FontSize="12"/>
+                                <TextBlock Text="Recess/projection only, ignores openings" FontSize="9" Foreground="{StaticResource TextMuted}"/>
+                            </StackPanel>
+                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="orderFacadeSegmentsText" Text="2" Width="34" Height="24" FontSize="11" HorizontalContentAlignment="Center" Padding="0" Margin="0,7,0,0"/>
+                            <CheckBox Grid.Row="2" Grid.Column="2" x:Name="chkFacadeSegmentsOnly" IsChecked="False" Margin="0,7,0,0"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Facade overall" FontSize="12" VerticalAlignment="Center" Margin="0,7,0,0"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="orderFacadeOverallText" Text="3" Width="34" Height="24" FontSize="11" HorizontalContentAlignment="Center" Padding="0" Margin="0,7,0,0"/>
+                            <CheckBox Grid.Row="3" Grid.Column="2" x:Name="chkFacadeOverall" IsChecked="False" Margin="0,7,0,0"/>
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Grid segment dimension" FontSize="12" VerticalAlignment="Center" Margin="0,7,0,0"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="orderGridSegmentText" Text="4" Width="34" Height="24" FontSize="11" HorizontalContentAlignment="Center" Padding="0" Margin="0,7,0,0"/>
+                            <CheckBox Grid.Row="4" Grid.Column="2" x:Name="chkGridSegment" IsChecked="True" Margin="0,7,0,0"/>
+
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="Grid overall dimension" FontSize="12" VerticalAlignment="Center" Margin="0,7,0,0"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" x:Name="orderGridOverallText" Text="5" Width="34" Height="24" FontSize="11" HorizontalContentAlignment="Center" Padding="0" Margin="0,7,0,0"/>
+                            <CheckBox Grid.Row="5" Grid.Column="2" x:Name="chkGridOverall" IsChecked="True" Margin="0,7,0,0"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#F0FDF4"
+                            BorderBrush="#BBF7D0"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="12"
+                            Margin="0,0,0,18">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="Include facade segments"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"
+                                           Foreground="#166534"/>
+                                <TextBlock Text="Adds recess / projection references"
+                                           FontSize="10"
+                                           Foreground="#4B5563"
+                                           Margin="0,3,0,0"/>
+                            </StackPanel>
+                            <CheckBox x:Name="chkIncludeFacadeSegment"
+                                      Grid.Column="1"
+                                      VerticalAlignment="Center"
+                                      IsChecked="True"/>
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Text="DIMENSION OPTIONS"
+                               Style="{StaticResource SectionTitle}"/>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="8"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="82"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Row="0" Grid.Column="0">
+                            <TextBlock Text="Offset from facade"
+                                       FontSize="12"/>
+                            <TextBlock Text="First dimension line distance"
+                                       FontSize="10"
+                                       Foreground="{StaticResource TextMuted}"
+                                       Margin="0,2,0,0"/>
+                        </StackPanel>
+                        <TextBox x:Name="facadeOffsetText"
+                                 Grid.Row="0"
+                                 Grid.Column="1"
+                                 Text="1200"
+                                 HorizontalContentAlignment="Right"/>
+
+                        <StackPanel Grid.Row="2" Grid.Column="0">
+                            <TextBlock Text="Offset between dimensions"
+                                       FontSize="12"/>
+                            <TextBlock Text="Spacing between selected lines"
+                                       FontSize="10"
+                                       Foreground="{StaticResource TextMuted}"
+                                       Margin="0,2,0,0"/>
+                        </StackPanel>
+                        <TextBox x:Name="betweenOffsetText"
+                                 Grid.Row="2"
+                                 Grid.Column="1"
+                                 Text="1000"
+                                 HorizontalContentAlignment="Right"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Footer buttons -->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="12"/>
+                <ColumnDefinition Width="105"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="Arch-X Studio - Architecture &amp; Technology"
+                       Foreground="#9CA3AF"
+                       FontSize="10"
+                       VerticalAlignment="Center"/>
+
+            <Button Grid.Column="1"
+                    x:Name="createUpdateButton"
+                    Content="CREATE"
+                    Background="{StaticResource BrandGreen}"
+                    Foreground="White"
+                    BorderBrush="{StaticResource BrandGreenDark}"
+                    Click="createUpdateButton_Click"/>
+
+            <Button Grid.Column="3"
+                    x:Name="reportButton"
+                    Content="REPORT"
+                    Background="White"
+                    Foreground="{StaticResource TextMain}"
+                    BorderBrush="#CBD5E1"
+                    Click="reportButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>
