@@ -1,5 +1,5 @@
 # pyRevit Auto Dim Tool
-
+![Tool UI](docs/screenshots/UI.png)
 A pyRevit tool for creating grid and facade dimensions across selected Revit plan views.
 
 This project started as a practical BIM automation experiment focused on reducing repetitive documentation work in Revit. The current version supports selected plan views, grid dimensions, facade dimensions, offset control, dimension type selection, and basic Revit 2025/2026 compatibility handling.
